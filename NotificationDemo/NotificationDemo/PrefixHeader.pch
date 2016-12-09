@@ -1,0 +1,51 @@
+//
+//  PrefixHeader.pch
+//  MacauTXH
+//
+//  Created by guopu on 31/8/2016.
+//  Copyright © 2016年 com.zxd.MacauTXH. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __OBJC__
+
+#import "NSString+lr_stringDate.h"
+
+#endif
+
+#ifdef DEBUG
+#define LRString [NSString stringWithFormat:@"%s", __FILE__].lastPathComponent
+#define LRLog(...) printf("%s: %s 第%d行: %s\n\n",[[NSString lr_stringDate] UTF8String], [LRString UTF8String] ,__LINE__, [[NSString stringWithFormat:__VA_ARGS__] UTF8String]);
+
+#else
+#define LRLog(...)
+#endif
+
+#define DataBaseName    @"NotificationDemo01.db"
+
+// 屏幕大小
+#define SCREEN_SIZE     [[UIScreen mainScreen] bounds].size
+#define SCREEN_WIDTH    [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT   [[UIScreen mainScreen] bounds].size.height
+
+// 本地通知
+#define LocalNotificationIDKey                  @"LocalNotificationID"
+#define LocalNotificationID_CountDown           @"LocalNotificationID_CountDown"
+#define LocalNotificationTypeKey                @"LocalNotificationType"
+#define LocalNotificationType_CountDown         @"LocalNotificationType_CountDown"
+#define LocalNotificationType_Timed             @"LocalNotificationType_Timed"
+#define LocalNotificationType_Drug              @"LocalNotificationType_Drug"
+
+
+#define CusBlue [UIColor colorWithRed:0/255.0 green:185/255.0 blue:255/255.0 alpha:1]//导航蓝
+#define BGColor [UIColor colorWithRed:248/255.0 green:250/255.0 blue:255/255.0 alpha:1]//背景色
+#define LineColor [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1]//分割線顏色
+#define SeparatorColor [UIColor colorWithRed:233/255.0 green:233/255.0 blue:235/255.0 alpha:1.0]//分割線顏色
+
+#define DefaultCoordinate CLLocationCoordinate2DMake(22.151408, 113.564488)
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */

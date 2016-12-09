@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyRemindViewController">
+            <connections>
+                <outlet property="tableView" destination="QFg-hv-Ypi" id="LA3-sN-7th"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QFg-hv-Ypi">
+                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="HHr-sL-hqh"/>
+                        <outlet property="delegate" destination="-1" id="Yfr-ji-5K6"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzu-8t-b0L">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico_menu_normal" translatesAutoresizingMaskIntoConstraints="NO" id="qoh-Rd-gjS">
+                            <rect key="frame" x="10" y="27" width="22" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="TjU-Fp-SYw"/>
+                                <constraint firstAttribute="width" constant="22" id="mgt-tU-A25"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgm-Rp-Lv2">
+                            <rect key="frame" x="0.0" y="0.0" width="46" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="46" id="XRA-84-RS5"/>
+                            </constraints>
+                            <connections>
+                                <action selector="menuAction:" destination="-1" eventType="touchUpInside" id="aOI-9Y-2WQ"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的提醒" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihs-ej-xNi">
+                            <rect key="frame" x="46" y="27" width="283" height="22"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.23445804149999999" green="0.46280869270000002" blue="0.8155248397" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="qoh-Rd-gjS" secondAttribute="bottom" constant="11" id="8At-SJ-GHk"/>
+                        <constraint firstItem="zgm-Rp-Lv2" firstAttribute="top" secondItem="Xzu-8t-b0L" secondAttribute="top" id="GEu-5m-Wsw"/>
+                        <constraint firstItem="ihs-ej-xNi" firstAttribute="leading" secondItem="zgm-Rp-Lv2" secondAttribute="trailing" id="Qeh-Cb-QO3"/>
+                        <constraint firstAttribute="bottom" secondItem="ihs-ej-xNi" secondAttribute="bottom" constant="11" id="Xzc-I4-g2P"/>
+                        <constraint firstAttribute="bottom" secondItem="zgm-Rp-Lv2" secondAttribute="bottom" id="arN-7A-ay4"/>
+                        <constraint firstItem="qoh-Rd-gjS" firstAttribute="leading" secondItem="Xzu-8t-b0L" secondAttribute="leading" constant="10" id="cDu-Id-1dH"/>
+                        <constraint firstAttribute="trailing" secondItem="ihs-ej-xNi" secondAttribute="trailing" constant="46" id="qwl-xJ-PkU"/>
+                        <constraint firstItem="zgm-Rp-Lv2" firstAttribute="leading" secondItem="Xzu-8t-b0L" secondAttribute="leading" id="sa0-xq-GjP"/>
+                        <constraint firstAttribute="height" constant="60" id="xZt-Oe-CO7"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.97254901960784312" green="0.98039215686274506" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="QFg-hv-Ypi" firstAttribute="top" secondItem="Xzu-8t-b0L" secondAttribute="bottom" id="QVY-tq-ycZ"/>
+                <constraint firstAttribute="trailing" secondItem="Xzu-8t-b0L" secondAttribute="trailing" id="S5G-P6-Qoc"/>
+                <constraint firstItem="Xzu-8t-b0L" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="U9N-sJ-xj7"/>
+                <constraint firstAttribute="bottom" secondItem="QFg-hv-Ypi" secondAttribute="bottom" id="bt1-e8-dnq"/>
+                <constraint firstAttribute="trailing" secondItem="QFg-hv-Ypi" secondAttribute="trailing" id="m0Q-0Y-MAh"/>
+                <constraint firstItem="QFg-hv-Ypi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ve7-FW-ul0"/>
+                <constraint firstItem="Xzu-8t-b0L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wrN-R9-Akj"/>
+            </constraints>
+            <point key="canvasLocation" x="274.5" y="277.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ico_menu_normal" width="20" height="14"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
+</document>

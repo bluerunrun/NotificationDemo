@@ -1,0 +1,818 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		56C19FFED2E4D766C9B24CE1 /* libPods-NotificationDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AE6A8B32B48F5AE40BA8B8 /* libPods-NotificationDemo.a */; };
+		7A0EA1BF1DF5596B00AD1AAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA1BE1DF5596B00AD1AAF /* main.m */; };
+		7A0EA1C21DF5596B00AD1AAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA1C11DF5596B00AD1AAF /* AppDelegate.m */; };
+		7A0EA1CA1DF5596B00AD1AAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EA1C91DF5596B00AD1AAF /* Assets.xcassets */; };
+		7A0EA1D81DF5596B00AD1AAF /* NotificationDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA1D71DF5596B00AD1AAF /* NotificationDemoTests.m */; };
+		7A0EA1E31DF5596B00AD1AAF /* NotificationDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA1E21DF5596B00AD1AAF /* NotificationDemoUITests.m */; };
+		7A0EA23A1DF55BCB00AD1AAF /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA2351DF55BCB00AD1AAF /* FirstViewController.m */; };
+		7A0EA23B1DF55BCB00AD1AAF /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EA2361DF55BCB00AD1AAF /* FirstViewController.xib */; };
+		7A0EA2501DF55BF200AD1AAF /* clsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA2401DF55BF200AD1AAF /* clsMenu.m */; };
+		7A0EA2511DF55BF200AD1AAF /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA2421DF55BF200AD1AAF /* CustomNavigationController.m */; };
+		7A0EA2521DF55BF200AD1AAF /* GHRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA2441DF55BF200AD1AAF /* GHRevealViewController.m */; };
+		7A0EA2531DF55BF200AD1AAF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA2461DF55BF200AD1AAF /* MainViewController.m */; };
+		7A0EA2541DF55BF200AD1AAF /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA2481DF55BF200AD1AAF /* MenuCell.m */; };
+		7A0EA2551DF55BF200AD1AAF /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EA2491DF55BF200AD1AAF /* MenuCell.xib */; };
+		7A0EA2561DF55BF200AD1AAF /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA24B1DF55BF200AD1AAF /* MenuViewController.m */; };
+		7A0EA2571DF55BF200AD1AAF /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EA24C1DF55BF200AD1AAF /* MenuViewController.xib */; };
+		7A0EA2581DF55BF200AD1AAF /* VersionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA24E1DF55BF200AD1AAF /* VersionViewController.m */; };
+		7A0EA2591DF55BF200AD1AAF /* VersionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EA24F1DF55BF200AD1AAF /* VersionViewController.xib */; };
+		7A0EA37A1DF565BD00AD1AAF /* clsOtherFun.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA3561DF565BD00AD1AAF /* clsOtherFun.m */; };
+		7A0EA38C1DF565DC00AD1AAF /* NSString+lr_stringDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA38B1DF565DC00AD1AAF /* NSString+lr_stringDate.m */; };
+		7A0EA38F1DF5665E00AD1AAF /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0EA38E1DF5665E00AD1AAF /* libsqlite3.0.tbd */; };
+		7A0EA3961DF5743300AD1AAF /* NotificationDemo01.db in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EA3951DF56C0900AD1AAF /* NotificationDemo01.db */; };
+		7A0EA3991DF57CE600AD1AAF /* ListPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA3981DF57CE600AD1AAF /* ListPickView.m */; };
+		7AA0F6A91DFA9CC300890A1E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AA0F6A81DFA9CC300890A1E /* CoreLocation.framework */; };
+		7AA0F6AB1DFA9CC900890A1E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AA0F6AA1DFA9CC900890A1E /* MapKit.framework */; };
+		7AA0F6B11DFAA91600890A1E /* AMCalloutAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA0F6B01DFAA91600890A1E /* AMCalloutAnnotationView.m */; };
+		7AFF3BA01DF93EAF006BB83E /* MyRemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF3B7A1DF93EAF006BB83E /* MyRemindCell.m */; };
+		7AFF3BA11DF93EAF006BB83E /* MyRemindCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFF3B7B1DF93EAF006BB83E /* MyRemindCell.xib */; };
+		7AFF3BA21DF93EAF006BB83E /* MyRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF3B7D1DF93EAF006BB83E /* MyRemindViewController.m */; };
+		7AFF3BA31DF93EAF006BB83E /* MyRemindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFF3B7E1DF93EAF006BB83E /* MyRemindViewController.xib */; };
+		7AFF3C321DF940B2006BB83E /* UIViewController+ShowAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF3C311DF940B2006BB83E /* UIViewController+ShowAlert.m */; };
+		7AFF3C3B1DF94C87006BB83E /* clsAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF3C3A1DF94C87006BB83E /* clsAlert.m */; };
+		7AFF3C401DF94E74006BB83E /* TimedRemindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF3C3E1DF94E74006BB83E /* TimedRemindVC.m */; };
+		7AFF3C411DF94E74006BB83E /* TimedRemindVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFF3C3F1DF94E74006BB83E /* TimedRemindVC.xib */; };
+		7AFF3C471DF9544B006BB83E /* CountDownRemindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF3C451DF9544B006BB83E /* CountDownRemindVC.m */; };
+		7AFF3C481DF9544B006BB83E /* CountDownRemindVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFF3C461DF9544B006BB83E /* CountDownRemindVC.xib */; };
+		7AFF3C4D1DF960F1006BB83E /* LocationRemindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFF3C4B1DF960F1006BB83E /* LocationRemindVC.m */; };
+		7AFF3C4E1DF960F1006BB83E /* LocationRemindVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AFF3C4C1DF960F1006BB83E /* LocationRemindVC.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A0EA1D41DF5596B00AD1AAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A0EA1B21DF5596B00AD1AAF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A0EA1B91DF5596B00AD1AAF;
+			remoteInfo = NotificationDemo;
+		};
+		7A0EA1DF1DF5596B00AD1AAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A0EA1B21DF5596B00AD1AAF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A0EA1B91DF5596B00AD1AAF;
+			remoteInfo = NotificationDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0AD17B512A56A4F7E36F6D18 /* Pods-NotificationDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotificationDemo/Pods-NotificationDemo.release.xcconfig"; sourceTree = "<group>"; };
+		2A4E3862C693F702936B18C3 /* Pods-NotificationDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotificationDemo/Pods-NotificationDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		7A0EA1BA1DF5596B00AD1AAF /* NotificationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotificationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A0EA1BE1DF5596B00AD1AAF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7A0EA1C01DF5596B00AD1AAF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7A0EA1C11DF5596B00AD1AAF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7A0EA1C91DF5596B00AD1AAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A0EA1CE1DF5596B00AD1AAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A0EA1D31DF5596B00AD1AAF /* NotificationDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotificationDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A0EA1D71DF5596B00AD1AAF /* NotificationDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationDemoTests.m; sourceTree = "<group>"; };
+		7A0EA1D91DF5596B00AD1AAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A0EA1DE1DF5596B00AD1AAF /* NotificationDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotificationDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A0EA1E21DF5596B00AD1AAF /* NotificationDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationDemoUITests.m; sourceTree = "<group>"; };
+		7A0EA1E41DF5596B00AD1AAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A0EA2341DF55BCB00AD1AAF /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		7A0EA2351DF55BCB00AD1AAF /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		7A0EA2361DF55BCB00AD1AAF /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
+		7A0EA23F1DF55BF200AD1AAF /* clsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsMenu.h; sourceTree = "<group>"; };
+		7A0EA2401DF55BF200AD1AAF /* clsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsMenu.m; sourceTree = "<group>"; };
+		7A0EA2411DF55BF200AD1AAF /* CustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationController.h; sourceTree = "<group>"; };
+		7A0EA2421DF55BF200AD1AAF /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
+		7A0EA2431DF55BF200AD1AAF /* GHRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHRevealViewController.h; sourceTree = "<group>"; };
+		7A0EA2441DF55BF200AD1AAF /* GHRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GHRevealViewController.m; sourceTree = "<group>"; };
+		7A0EA2451DF55BF200AD1AAF /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		7A0EA2461DF55BF200AD1AAF /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		7A0EA2471DF55BF200AD1AAF /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
+		7A0EA2481DF55BF200AD1AAF /* MenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCell.m; sourceTree = "<group>"; };
+		7A0EA2491DF55BF200AD1AAF /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
+		7A0EA24A1DF55BF200AD1AAF /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		7A0EA24B1DF55BF200AD1AAF /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		7A0EA24C1DF55BF200AD1AAF /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		7A0EA24D1DF55BF200AD1AAF /* VersionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VersionViewController.h; sourceTree = "<group>"; };
+		7A0EA24E1DF55BF200AD1AAF /* VersionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VersionViewController.m; sourceTree = "<group>"; };
+		7A0EA24F1DF55BF200AD1AAF /* VersionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VersionViewController.xib; sourceTree = "<group>"; };
+		7A0EA3521DF564A400AD1AAF /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		7A0EA3551DF565BD00AD1AAF /* clsOtherFun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsOtherFun.h; sourceTree = "<group>"; };
+		7A0EA3561DF565BD00AD1AAF /* clsOtherFun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsOtherFun.m; sourceTree = "<group>"; };
+		7A0EA38A1DF565DC00AD1AAF /* NSString+lr_stringDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+lr_stringDate.h"; sourceTree = "<group>"; };
+		7A0EA38B1DF565DC00AD1AAF /* NSString+lr_stringDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+lr_stringDate.m"; sourceTree = "<group>"; };
+		7A0EA38E1DF5665E00AD1AAF /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		7A0EA3951DF56C0900AD1AAF /* NotificationDemo01.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = NotificationDemo01.db; sourceTree = "<group>"; };
+		7A0EA3971DF57CE600AD1AAF /* ListPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListPickView.h; sourceTree = "<group>"; };
+		7A0EA3981DF57CE600AD1AAF /* ListPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListPickView.m; sourceTree = "<group>"; };
+		7AA0F6A81DFA9CC300890A1E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7AA0F6AA1DFA9CC900890A1E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		7AA0F6AF1DFAA91600890A1E /* AMCalloutAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMCalloutAnnotationView.h; sourceTree = "<group>"; };
+		7AA0F6B01DFAA91600890A1E /* AMCalloutAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMCalloutAnnotationView.m; sourceTree = "<group>"; };
+		7AFF3B791DF93EAF006BB83E /* MyRemindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRemindCell.h; sourceTree = "<group>"; };
+		7AFF3B7A1DF93EAF006BB83E /* MyRemindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRemindCell.m; sourceTree = "<group>"; };
+		7AFF3B7B1DF93EAF006BB83E /* MyRemindCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRemindCell.xib; sourceTree = "<group>"; };
+		7AFF3B7C1DF93EAF006BB83E /* MyRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRemindViewController.h; sourceTree = "<group>"; };
+		7AFF3B7D1DF93EAF006BB83E /* MyRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRemindViewController.m; sourceTree = "<group>"; };
+		7AFF3B7E1DF93EAF006BB83E /* MyRemindViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyRemindViewController.xib; sourceTree = "<group>"; };
+		7AFF3C301DF940B2006BB83E /* UIViewController+ShowAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ShowAlert.h"; sourceTree = "<group>"; };
+		7AFF3C311DF940B2006BB83E /* UIViewController+ShowAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ShowAlert.m"; sourceTree = "<group>"; };
+		7AFF3C391DF94C87006BB83E /* clsAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clsAlert.h; sourceTree = "<group>"; };
+		7AFF3C3A1DF94C87006BB83E /* clsAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = clsAlert.m; sourceTree = "<group>"; };
+		7AFF3C3D1DF94E74006BB83E /* TimedRemindVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimedRemindVC.h; sourceTree = "<group>"; };
+		7AFF3C3E1DF94E74006BB83E /* TimedRemindVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimedRemindVC.m; sourceTree = "<group>"; };
+		7AFF3C3F1DF94E74006BB83E /* TimedRemindVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimedRemindVC.xib; sourceTree = "<group>"; };
+		7AFF3C441DF9544B006BB83E /* CountDownRemindVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountDownRemindVC.h; sourceTree = "<group>"; };
+		7AFF3C451DF9544B006BB83E /* CountDownRemindVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountDownRemindVC.m; sourceTree = "<group>"; };
+		7AFF3C461DF9544B006BB83E /* CountDownRemindVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountDownRemindVC.xib; sourceTree = "<group>"; };
+		7AFF3C4A1DF960F1006BB83E /* LocationRemindVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationRemindVC.h; sourceTree = "<group>"; };
+		7AFF3C4B1DF960F1006BB83E /* LocationRemindVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationRemindVC.m; sourceTree = "<group>"; };
+		7AFF3C4C1DF960F1006BB83E /* LocationRemindVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationRemindVC.xib; sourceTree = "<group>"; };
+		F7AE6A8B32B48F5AE40BA8B8 /* libPods-NotificationDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NotificationDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A0EA1B71DF5596B00AD1AAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AA0F6AB1DFA9CC900890A1E /* MapKit.framework in Frameworks */,
+				7AA0F6A91DFA9CC300890A1E /* CoreLocation.framework in Frameworks */,
+				7A0EA38F1DF5665E00AD1AAF /* libsqlite3.0.tbd in Frameworks */,
+				56C19FFED2E4D766C9B24CE1 /* libPods-NotificationDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A0EA1D01DF5596B00AD1AAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A0EA1DB1DF5596B00AD1AAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7A0EA1B11DF5596B00AD1AAF = {
+			isa = PBXGroup;
+			children = (
+				7A0EA1BC1DF5596B00AD1AAF /* NotificationDemo */,
+				7A0EA1D61DF5596B00AD1AAF /* NotificationDemoTests */,
+				7A0EA1E11DF5596B00AD1AAF /* NotificationDemoUITests */,
+				7A0EA1BB1DF5596B00AD1AAF /* Products */,
+				7A0EA38D1DF5665E00AD1AAF /* Frameworks */,
+				BBCD41D0DE4F16855716A252 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		7A0EA1BB1DF5596B00AD1AAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A0EA1BA1DF5596B00AD1AAF /* NotificationDemo.app */,
+				7A0EA1D31DF5596B00AD1AAF /* NotificationDemoTests.xctest */,
+				7A0EA1DE1DF5596B00AD1AAF /* NotificationDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A0EA1BC1DF5596B00AD1AAF /* NotificationDemo */ = {
+			isa = PBXGroup;
+			children = (
+				7A0EA1C01DF5596B00AD1AAF /* AppDelegate.h */,
+				7A0EA1C11DF5596B00AD1AAF /* AppDelegate.m */,
+				7A0EA2341DF55BCB00AD1AAF /* FirstViewController.h */,
+				7A0EA2351DF55BCB00AD1AAF /* FirstViewController.m */,
+				7A0EA2361DF55BCB00AD1AAF /* FirstViewController.xib */,
+				7AFF3B4D1DF93EAF006BB83E /* MyRemind */,
+				7A0EA23E1DF55BF200AD1AAF /* Main */,
+				7A0EA3541DF565BD00AD1AAF /* FileManager */,
+				7A0EA3571DF565BD00AD1AAF /* Libraries */,
+				7A0EA1BD1DF5596B00AD1AAF /* Supporting Files */,
+				7A0EA3521DF564A400AD1AAF /* PrefixHeader.pch */,
+			);
+			path = NotificationDemo;
+			sourceTree = "<group>";
+		};
+		7A0EA1BD1DF5596B00AD1AAF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A0EA3951DF56C0900AD1AAF /* NotificationDemo01.db */,
+				7A0EA1BE1DF5596B00AD1AAF /* main.m */,
+				7A0EA1C91DF5596B00AD1AAF /* Assets.xcassets */,
+				7A0EA1CE1DF5596B00AD1AAF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7A0EA1D61DF5596B00AD1AAF /* NotificationDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A0EA1D71DF5596B00AD1AAF /* NotificationDemoTests.m */,
+				7A0EA1D91DF5596B00AD1AAF /* Info.plist */,
+			);
+			path = NotificationDemoTests;
+			sourceTree = "<group>";
+		};
+		7A0EA1E11DF5596B00AD1AAF /* NotificationDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7A0EA1E21DF5596B00AD1AAF /* NotificationDemoUITests.m */,
+				7A0EA1E41DF5596B00AD1AAF /* Info.plist */,
+			);
+			path = NotificationDemoUITests;
+			sourceTree = "<group>";
+		};
+		7A0EA23E1DF55BF200AD1AAF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7A0EA23F1DF55BF200AD1AAF /* clsMenu.h */,
+				7A0EA2401DF55BF200AD1AAF /* clsMenu.m */,
+				7A0EA2411DF55BF200AD1AAF /* CustomNavigationController.h */,
+				7A0EA2421DF55BF200AD1AAF /* CustomNavigationController.m */,
+				7A0EA2431DF55BF200AD1AAF /* GHRevealViewController.h */,
+				7A0EA2441DF55BF200AD1AAF /* GHRevealViewController.m */,
+				7A0EA2451DF55BF200AD1AAF /* MainViewController.h */,
+				7A0EA2461DF55BF200AD1AAF /* MainViewController.m */,
+				7A0EA2471DF55BF200AD1AAF /* MenuCell.h */,
+				7A0EA2481DF55BF200AD1AAF /* MenuCell.m */,
+				7A0EA2491DF55BF200AD1AAF /* MenuCell.xib */,
+				7A0EA24A1DF55BF200AD1AAF /* MenuViewController.h */,
+				7A0EA24B1DF55BF200AD1AAF /* MenuViewController.m */,
+				7A0EA24C1DF55BF200AD1AAF /* MenuViewController.xib */,
+				7A0EA24D1DF55BF200AD1AAF /* VersionViewController.h */,
+				7A0EA24E1DF55BF200AD1AAF /* VersionViewController.m */,
+				7A0EA24F1DF55BF200AD1AAF /* VersionViewController.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		7A0EA3541DF565BD00AD1AAF /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				7AFF3C301DF940B2006BB83E /* UIViewController+ShowAlert.h */,
+				7AFF3C311DF940B2006BB83E /* UIViewController+ShowAlert.m */,
+				7A0EA3971DF57CE600AD1AAF /* ListPickView.h */,
+				7A0EA3981DF57CE600AD1AAF /* ListPickView.m */,
+				7A0EA38A1DF565DC00AD1AAF /* NSString+lr_stringDate.h */,
+				7A0EA38B1DF565DC00AD1AAF /* NSString+lr_stringDate.m */,
+				7A0EA3551DF565BD00AD1AAF /* clsOtherFun.h */,
+				7A0EA3561DF565BD00AD1AAF /* clsOtherFun.m */,
+			);
+			path = FileManager;
+			sourceTree = "<group>";
+		};
+		7A0EA3571DF565BD00AD1AAF /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		7A0EA38D1DF5665E00AD1AAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AA0F6AA1DFA9CC900890A1E /* MapKit.framework */,
+				7AA0F6A81DFA9CC300890A1E /* CoreLocation.framework */,
+				7A0EA38E1DF5665E00AD1AAF /* libsqlite3.0.tbd */,
+				F7AE6A8B32B48F5AE40BA8B8 /* libPods-NotificationDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7AFF3B4D1DF93EAF006BB83E /* MyRemind */ = {
+			isa = PBXGroup;
+			children = (
+				7AFF3C381DF94C87006BB83E /* Class */,
+				7AFF3C431DF9543A006BB83E /* CountDownRemind */,
+				7AFF3C3C1DF94E74006BB83E /* TimedRemind */,
+				7AFF3C491DF960E3006BB83E /* LocationRemind */,
+				7AFF3B791DF93EAF006BB83E /* MyRemindCell.h */,
+				7AFF3B7A1DF93EAF006BB83E /* MyRemindCell.m */,
+				7AFF3B7B1DF93EAF006BB83E /* MyRemindCell.xib */,
+				7AFF3B7C1DF93EAF006BB83E /* MyRemindViewController.h */,
+				7AFF3B7D1DF93EAF006BB83E /* MyRemindViewController.m */,
+				7AFF3B7E1DF93EAF006BB83E /* MyRemindViewController.xib */,
+			);
+			path = MyRemind;
+			sourceTree = "<group>";
+		};
+		7AFF3C381DF94C87006BB83E /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				7AFF3C391DF94C87006BB83E /* clsAlert.h */,
+				7AFF3C3A1DF94C87006BB83E /* clsAlert.m */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		7AFF3C3C1DF94E74006BB83E /* TimedRemind */ = {
+			isa = PBXGroup;
+			children = (
+				7AFF3C3D1DF94E74006BB83E /* TimedRemindVC.h */,
+				7AFF3C3E1DF94E74006BB83E /* TimedRemindVC.m */,
+				7AFF3C3F1DF94E74006BB83E /* TimedRemindVC.xib */,
+			);
+			path = TimedRemind;
+			sourceTree = "<group>";
+		};
+		7AFF3C431DF9543A006BB83E /* CountDownRemind */ = {
+			isa = PBXGroup;
+			children = (
+				7AFF3C441DF9544B006BB83E /* CountDownRemindVC.h */,
+				7AFF3C451DF9544B006BB83E /* CountDownRemindVC.m */,
+				7AFF3C461DF9544B006BB83E /* CountDownRemindVC.xib */,
+			);
+			path = CountDownRemind;
+			sourceTree = "<group>";
+		};
+		7AFF3C491DF960E3006BB83E /* LocationRemind */ = {
+			isa = PBXGroup;
+			children = (
+				7AA0F6AF1DFAA91600890A1E /* AMCalloutAnnotationView.h */,
+				7AA0F6B01DFAA91600890A1E /* AMCalloutAnnotationView.m */,
+				7AFF3C4A1DF960F1006BB83E /* LocationRemindVC.h */,
+				7AFF3C4B1DF960F1006BB83E /* LocationRemindVC.m */,
+				7AFF3C4C1DF960F1006BB83E /* LocationRemindVC.xib */,
+			);
+			path = LocationRemind;
+			sourceTree = "<group>";
+		};
+		BBCD41D0DE4F16855716A252 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2A4E3862C693F702936B18C3 /* Pods-NotificationDemo.debug.xcconfig */,
+				0AD17B512A56A4F7E36F6D18 /* Pods-NotificationDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A0EA1B91DF5596B00AD1AAF /* NotificationDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A0EA1E71DF5596B00AD1AAF /* Build configuration list for PBXNativeTarget "NotificationDemo" */;
+			buildPhases = (
+				7FB2B39DDDB30D2CCB48B129 /* [CP] Check Pods Manifest.lock */,
+				7A0EA1B61DF5596B00AD1AAF /* Sources */,
+				7A0EA1B71DF5596B00AD1AAF /* Frameworks */,
+				7A0EA1B81DF5596B00AD1AAF /* Resources */,
+				24617A089E54A02D0DE7544B /* [CP] Embed Pods Frameworks */,
+				CCB8AAAEB8C6DF8D12DB6B87 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationDemo;
+			productName = NotificationDemo;
+			productReference = 7A0EA1BA1DF5596B00AD1AAF /* NotificationDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7A0EA1D21DF5596B00AD1AAF /* NotificationDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A0EA1EA1DF5596B00AD1AAF /* Build configuration list for PBXNativeTarget "NotificationDemoTests" */;
+			buildPhases = (
+				7A0EA1CF1DF5596B00AD1AAF /* Sources */,
+				7A0EA1D01DF5596B00AD1AAF /* Frameworks */,
+				7A0EA1D11DF5596B00AD1AAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A0EA1D51DF5596B00AD1AAF /* PBXTargetDependency */,
+			);
+			name = NotificationDemoTests;
+			productName = NotificationDemoTests;
+			productReference = 7A0EA1D31DF5596B00AD1AAF /* NotificationDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7A0EA1DD1DF5596B00AD1AAF /* NotificationDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A0EA1ED1DF5596B00AD1AAF /* Build configuration list for PBXNativeTarget "NotificationDemoUITests" */;
+			buildPhases = (
+				7A0EA1DA1DF5596B00AD1AAF /* Sources */,
+				7A0EA1DB1DF5596B00AD1AAF /* Frameworks */,
+				7A0EA1DC1DF5596B00AD1AAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A0EA1E01DF5596B00AD1AAF /* PBXTargetDependency */,
+			);
+			name = NotificationDemoUITests;
+			productName = NotificationDemoUITests;
+			productReference = 7A0EA1DE1DF5596B00AD1AAF /* NotificationDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A0EA1B21DF5596B00AD1AAF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = blue;
+				TargetAttributes = {
+					7A0EA1B91DF5596B00AD1AAF = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = TKAQTCSP88;
+						ProvisioningStyle = Automatic;
+					};
+					7A0EA1D21DF5596B00AD1AAF = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 8Y39974LR4;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7A0EA1B91DF5596B00AD1AAF;
+					};
+					7A0EA1DD1DF5596B00AD1AAF = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 8Y39974LR4;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7A0EA1B91DF5596B00AD1AAF;
+					};
+				};
+			};
+			buildConfigurationList = 7A0EA1B51DF5596B00AD1AAF /* Build configuration list for PBXProject "NotificationDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7A0EA1B11DF5596B00AD1AAF;
+			productRefGroup = 7A0EA1BB1DF5596B00AD1AAF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A0EA1B91DF5596B00AD1AAF /* NotificationDemo */,
+				7A0EA1D21DF5596B00AD1AAF /* NotificationDemoTests */,
+				7A0EA1DD1DF5596B00AD1AAF /* NotificationDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A0EA1B81DF5596B00AD1AAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A0EA3961DF5743300AD1AAF /* NotificationDemo01.db in Resources */,
+				7AFF3C481DF9544B006BB83E /* CountDownRemindVC.xib in Resources */,
+				7A0EA2551DF55BF200AD1AAF /* MenuCell.xib in Resources */,
+				7AFF3BA31DF93EAF006BB83E /* MyRemindViewController.xib in Resources */,
+				7A0EA1CA1DF5596B00AD1AAF /* Assets.xcassets in Resources */,
+				7A0EA23B1DF55BCB00AD1AAF /* FirstViewController.xib in Resources */,
+				7A0EA2571DF55BF200AD1AAF /* MenuViewController.xib in Resources */,
+				7AFF3C411DF94E74006BB83E /* TimedRemindVC.xib in Resources */,
+				7AFF3BA11DF93EAF006BB83E /* MyRemindCell.xib in Resources */,
+				7A0EA2591DF55BF200AD1AAF /* VersionViewController.xib in Resources */,
+				7AFF3C4E1DF960F1006BB83E /* LocationRemindVC.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A0EA1D11DF5596B00AD1AAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A0EA1DC1DF5596B00AD1AAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		24617A089E54A02D0DE7544B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NotificationDemo/Pods-NotificationDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FB2B39DDDB30D2CCB48B129 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CCB8AAAEB8C6DF8D12DB6B87 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NotificationDemo/Pods-NotificationDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A0EA1B61DF5596B00AD1AAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A0EA2581DF55BF200AD1AAF /* VersionViewController.m in Sources */,
+				7AFF3BA01DF93EAF006BB83E /* MyRemindCell.m in Sources */,
+				7A0EA2521DF55BF200AD1AAF /* GHRevealViewController.m in Sources */,
+				7A0EA3991DF57CE600AD1AAF /* ListPickView.m in Sources */,
+				7A0EA1C21DF5596B00AD1AAF /* AppDelegate.m in Sources */,
+				7AFF3C401DF94E74006BB83E /* TimedRemindVC.m in Sources */,
+				7AA0F6B11DFAA91600890A1E /* AMCalloutAnnotationView.m in Sources */,
+				7AFF3C471DF9544B006BB83E /* CountDownRemindVC.m in Sources */,
+				7A0EA2531DF55BF200AD1AAF /* MainViewController.m in Sources */,
+				7AFF3C321DF940B2006BB83E /* UIViewController+ShowAlert.m in Sources */,
+				7A0EA1BF1DF5596B00AD1AAF /* main.m in Sources */,
+				7A0EA37A1DF565BD00AD1AAF /* clsOtherFun.m in Sources */,
+				7A0EA2541DF55BF200AD1AAF /* MenuCell.m in Sources */,
+				7A0EA2501DF55BF200AD1AAF /* clsMenu.m in Sources */,
+				7AFF3BA21DF93EAF006BB83E /* MyRemindViewController.m in Sources */,
+				7AFF3C4D1DF960F1006BB83E /* LocationRemindVC.m in Sources */,
+				7A0EA2511DF55BF200AD1AAF /* CustomNavigationController.m in Sources */,
+				7A0EA23A1DF55BCB00AD1AAF /* FirstViewController.m in Sources */,
+				7A0EA38C1DF565DC00AD1AAF /* NSString+lr_stringDate.m in Sources */,
+				7A0EA2561DF55BF200AD1AAF /* MenuViewController.m in Sources */,
+				7AFF3C3B1DF94C87006BB83E /* clsAlert.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A0EA1CF1DF5596B00AD1AAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A0EA1D81DF5596B00AD1AAF /* NotificationDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A0EA1DA1DF5596B00AD1AAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A0EA1E31DF5596B00AD1AAF /* NotificationDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A0EA1D51DF5596B00AD1AAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A0EA1B91DF5596B00AD1AAF /* NotificationDemo */;
+			targetProxy = 7A0EA1D41DF5596B00AD1AAF /* PBXContainerItemProxy */;
+		};
+		7A0EA1E01DF5596B00AD1AAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A0EA1B91DF5596B00AD1AAF /* NotificationDemo */;
+			targetProxy = 7A0EA1DF1DF5596B00AD1AAF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7A0EA1E51DF5596B00AD1AAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7A0EA1E61DF5596B00AD1AAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A0EA1E81DF5596B00AD1AAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A4E3862C693F702936B18C3 /* Pods-NotificationDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TKAQTCSP88;
+				GCC_PREFIX_HEADER = NotificationDemo/PrefixHeader.pch;
+				INFOPLIST_FILE = NotificationDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blue.MyNotificationDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7A0EA1E91DF5596B00AD1AAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AD17B512A56A4F7E36F6D18 /* Pods-NotificationDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TKAQTCSP88;
+				GCC_PREFIX_HEADER = NotificationDemo/PrefixHeader.pch;
+				INFOPLIST_FILE = NotificationDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blue.MyNotificationDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7A0EA1EB1DF5596B00AD1AAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 8Y39974LR4;
+				INFOPLIST_FILE = NotificationDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blue.NotificationDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NotificationDemo.app/NotificationDemo";
+			};
+			name = Debug;
+		};
+		7A0EA1EC1DF5596B00AD1AAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 8Y39974LR4;
+				INFOPLIST_FILE = NotificationDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blue.NotificationDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NotificationDemo.app/NotificationDemo";
+			};
+			name = Release;
+		};
+		7A0EA1EE1DF5596B00AD1AAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 8Y39974LR4;
+				INFOPLIST_FILE = NotificationDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blue.NotificationDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = NotificationDemo;
+			};
+			name = Debug;
+		};
+		7A0EA1EF1DF5596B00AD1AAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 8Y39974LR4;
+				INFOPLIST_FILE = NotificationDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.blue.NotificationDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = NotificationDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A0EA1B51DF5596B00AD1AAF /* Build configuration list for PBXProject "NotificationDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A0EA1E51DF5596B00AD1AAF /* Debug */,
+				7A0EA1E61DF5596B00AD1AAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A0EA1E71DF5596B00AD1AAF /* Build configuration list for PBXNativeTarget "NotificationDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A0EA1E81DF5596B00AD1AAF /* Debug */,
+				7A0EA1E91DF5596B00AD1AAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A0EA1EA1DF5596B00AD1AAF /* Build configuration list for PBXNativeTarget "NotificationDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A0EA1EB1DF5596B00AD1AAF /* Debug */,
+				7A0EA1EC1DF5596B00AD1AAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A0EA1ED1DF5596B00AD1AAF /* Build configuration list for PBXNativeTarget "NotificationDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A0EA1EE1DF5596B00AD1AAF /* Debug */,
+				7A0EA1EF1DF5596B00AD1AAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A0EA1B21DF5596B00AD1AAF /* Project object */;
+}
