@@ -14,7 +14,6 @@
 @property (strong, nonatomic) UIViewController * rootViewController;
 
 @property (nonatomic, copy) NSString *messageID;
-@property (nonatomic, copy) NSString *messageType;
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, strong) NSDate *messageTime;
 

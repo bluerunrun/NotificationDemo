@@ -15,13 +15,14 @@
 
 @interface LocationRemindVC ()<MKMapViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *btnIsEntryAlert;
-@property (weak, nonatomic) IBOutlet UIButton *btnIsExitAlert;
+@property (weak, nonatomic) IBOutlet UIButton *btnIsAlert;
 @property (weak, nonatomic) IBOutlet UITextField *tfRadius;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, assign) double currLatitude;
-@property (nonatomic, assign) double currLongitude;
+
+@property (assign, nonatomic) BOOL isAlert;
+@property (assign, nonatomic) double radius;
+@property (nonatomic, assign) CLLocationCoordinate2D currCoordinate;
 
 @end
 
@@ -41,15 +42,25 @@
         self.locationManager.delegate=nil;
         self.locationManager = nil;
     }
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.currLatitude = [clsOtherFun getTriggerCoordinate].latitude;
-    self.currLongitude = [clsOtherFun getTriggerCoordinate].longitude;
-    self.tfRadius.text = [NSString stringWithFormat:@"%.2f",[clsOtherFun getTriggerRadius]];
+    
+    self.currCoordinate = [clsOtherFun getTriggerLocationCoordinate];
+    self.radius = [clsOtherFun getTriggerLocationRadius];
+    if (self.radius > 0) {
+        self.isAlert = [clsOtherFun getTriggerLocationON];
+    }else{
+        self.isAlert = NO;
+    }
+    
     [self initMap];
+    UILongPressGestureRecognizer * longGes=[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressToDo:)];
+    longGes.minimumPressDuration = 1.0;
+    [self.mapView addGestureRecognizer:longGes];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,57 +68,92 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)setIsAlert:(BOOL)isAlert{
+    _isAlert = isAlert;
+    self.btnIsAlert.selected = isAlert;
+    [clsOtherFun setTriggerLocationON:isAlert];
+    if (!isAlert) {
+        
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 10.0) {
+            [clsOtherFun cancel10LocalNotificationWithIdentifier:LocalNotificationID_Location];
+        }else{
+            [clsOtherFun cancelLocalNotificationWithIdentifier:LocalNotificationID_Location];
+        }
+    }else{
+        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 10.0) {
+            [clsOtherFun add10LocalNotificationWithIdentifier:LocalNotificationID_Location Msg:@"倒计时到了！该干嘛干嘛！" Location:self.currCoordinate radius:self.radius];
+        }
+        else{
+            [clsOtherFun addLocalNotificationWithIdentifier:LocalNotificationID_Location Msg:@"倒计时到了！该干嘛干嘛！" Location:self.currCoordinate radius:self.radius]
+            ;
+        }
+    }
+}
+
+-(void)setRadius:(double)radius{
+    _radius = radius;
+    self.tfRadius.text = [NSString stringWithFormat:@"%.2f",radius];
+    [clsOtherFun setTriggerLocationRadius:radius];
+}
+
+-(void)setCurrCoordinate:(CLLocationCoordinate2D)currCoordinate{
+    _currCoordinate = currCoordinate;
+    [clsOtherFun setTriggerLocationCoordinate:currCoordinate];
+}
+
+#pragma mark - Response
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+}
+
+-(void)longPressToDo:(UILongPressGestureRecognizer *)gesture{
+    
+    if (gesture.state == UIGestureRecognizerStateEnded){
+        return;
+    }
+    
+    //坐标转换
+    CGPoint touchPoint = [gesture locationInView:_mapView];
+    CLLocationCoordinate2D touchMapCoordinate =
+    [_mapView convertPoint:touchPoint toCoordinateFromView:_mapView];
+    
+    self.currCoordinate = touchMapCoordinate;
+    if (self.isAlert) {
+        self.isAlert = YES;
+    }
+    [self goToPosition:touchMapCoordinate];
+}
+
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)switchEntryAction:(id)sender {
-    [self.view endEditing:YES];
-    self.btnIsEntryAlert.selected = !self.btnIsEntryAlert.selected;
-    [clsOtherFun setTriggerCountDountON:self.btnIsEntryAlert.selected];
-    if (!self.btnIsEntryAlert.selected) {
-        
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 10.0) {
-            [clsOtherFun cancel10LocalNotificationWithIdentifier:LocalNotificationID_CountDown];
-        }else{
-            [clsOtherFun cancelLocalNotificationWithIdentifier:LocalNotificationID_CountDown];
-        }
-    }else{
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 10.0) {
-            [clsOtherFun add10LocalNotificationWithIdentifier:LocalNotificationID_CountDown Type:LocalNotificationType_CountDown Msg:@"倒计时到了！该干嘛干嘛！" Second:[self.tfRadius.text longLongValue]];
-        }
-        else{
-            [clsOtherFun addLocalNotificationWithIdentifier:LocalNotificationID_CountDown Type:LocalNotificationType_CountDown Msg:@"倒计时到了！该干嘛干嘛！" Second:[self.tfRadius.text longLongValue]]
-            ;
-        }
-    }
-}
 
-- (IBAction)switchExitAction:(id)sender {
+- (IBAction)switchAction:(id)sender {
     [self.view endEditing:YES];
-    self.btnIsExitAlert.selected = !self.btnIsExitAlert.selected;
-    [clsOtherFun setTriggerLocationON:self.btnIsExitAlert.selected];
-    if (!self.btnIsExitAlert.selected) {
-        
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 10.0) {
-            [clsOtherFun cancel10LocalNotificationWithIdentifier:LocalNotificationID_CountDown];
-        }else{
-            [clsOtherFun cancelLocalNotificationWithIdentifier:LocalNotificationID_CountDown];
-        }
-    }else{
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 10.0) {
-            [clsOtherFun add10LocalNotificationWithIdentifier:LocalNotificationID_CountDown Type:LocalNotificationType_CountDown Msg:@"倒计时到了！该干嘛干嘛！" Second:[self.tfRadius.text longLongValue]];
-        }
-        else{
-            [clsOtherFun addLocalNotificationWithIdentifier:LocalNotificationID_CountDown Type:LocalNotificationType_CountDown Msg:@"倒计时到了！该干嘛干嘛！" Second:[self.tfRadius.text longLongValue]]
-            ;
-        }
+    if ([self.tfRadius.text doubleValue] <= 0) {
+        [clsOtherFun showAlertMessage:@"半径不能小于0米！"];
+        self.isAlert = NO;
+        return;
     }
+    
+    self.btnIsAlert.selected = !self.btnIsAlert.selected;
+    self.isAlert = self.btnIsAlert.selected;
 }
 
 #pragma mark -UITextFieldDelegate
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-    [clsOtherFun setTriggerRadius:[textField.text doubleValue]];
+    if ([self.tfRadius.text doubleValue] <= 0) {
+        [clsOtherFun showAlertMessage:@"半径不能小于0米！"];
+        self.isAlert = NO;
+        return;
+    }
+    
+    self.radius = [textField.text doubleValue];
+    if (self.isAlert) {
+        self.isAlert = YES;
+    }
 }
 
 #pragma mark -PrivateMethods
@@ -175,12 +221,11 @@
 ////当定位自身时调用
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
     
-//    NSLog(@"经纬度＝%f,%f",loc.longitude,loc.latitude);
 //    CLLocationCoordinate2D loc = [userLocation coordinate];
 //    self.currLatitude = loc.latitude;
 //    self.currLongitude = loc.longitude;
-//    [clsOtherFun setTriggerCoordinate:loc];
-    [self goToPosition:CLLocationCoordinate2DMake(self.currLatitude, self.currLongitude)];
+//    NSLog(@"经纬度＝%f,%f",loc.longitude,loc.latitude);
+    [self goToPosition:self.currCoordinate];
 }
 
 -(void)mapView:(MKMapView *)mapView didFailToLocateUserWithError:(NSError *)error{
@@ -196,9 +241,10 @@
             break;
         case MKAnnotationViewDragStateEnding:
         {
-            self.currLatitude=annotationView.annotation.coordinate.latitude;
-            self.currLongitude=annotationView.annotation.coordinate.longitude;
-            [clsOtherFun setTriggerCoordinate:CLLocationCoordinate2DMake(self.currLatitude, self.currLongitude)];
+            self.currCoordinate=annotationView.annotation.coordinate;
+            if (self.isAlert) {
+                self.isAlert = YES;
+            }
             [annotationView setDragState:MKAnnotationViewDragStateNone animated:NO];
             if (oldState != MKAnnotationViewDragStateNone) {
                 NSLog(@"Drag coordinate : %f %f",annotationView.annotation.coordinate.latitude,annotationView.annotation.coordinate.longitude);
@@ -206,7 +252,7 @@
         }
             break;
         case MKAnnotationViewDragStateCanceling:
-            [self goToPosition:CLLocationCoordinate2DMake(self.currLatitude, self.currLongitude)];
+            [self goToPosition:self.currCoordinate];
         default:
             break;
     }

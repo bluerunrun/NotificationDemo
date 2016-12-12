@@ -15,16 +15,28 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *tfSeconds;
 @property (weak, nonatomic) IBOutlet UIButton *btnIsAlert;
+@property (assign, nonatomic) long long seconds;
+@property (assign, nonatomic) BOOL isAlert;
 
 @end
 
 @implementation CountDownRemindVC
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.btnIsAlert.selected = [clsOtherFun getTriggerCountDountON];
-    self.tfSeconds.text = [NSString stringWithFormat:@"%lld",[clsOtherFun getTriggerCountDountSeconds]];
+    
+    self.seconds = [clsOtherFun getTriggerCountDountSeconds];
+    if (self.seconds > 0) {
+        self.isAlert = [clsOtherFun getTriggerCountDountON];
+    }else{
+        self.isAlert = NO;
+    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recieveNotify:) name:@"LocalNotification_CountDown_Recieve" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,16 +48,12 @@
     [self.view endEditing:YES];
 }
 
-- (IBAction)backAction:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (IBAction)switchAction:(id)sender {
-    [self.view endEditing:YES];
-    self.btnIsAlert.selected = !self.btnIsAlert.selected;
-    [clsOtherFun setTriggerCountDountON:self.btnIsAlert.selected];
-    if (!self.btnIsAlert.selected) {
-        
+-(void)setIsAlert:(BOOL)isAlert{
+    _isAlert = isAlert;
+    self.btnIsAlert.selected = isAlert;
+    [clsOtherFun setTriggerCountDountON:isAlert];
+    
+    if (!isAlert) {
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 10.0) {
             [clsOtherFun cancel10LocalNotificationWithIdentifier:LocalNotificationID_CountDown];
         }else{
@@ -53,25 +61,50 @@
         }
     }else{
         if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 10.0) {
-            [clsOtherFun add10LocalNotificationWithIdentifier:LocalNotificationID_CountDown Type:LocalNotificationType_CountDown Msg:@"倒计时到了！该干嘛干嘛！" Second:[self.tfSeconds.text longLongValue]];
-        }
-        else{
-            [clsOtherFun addLocalNotificationWithIdentifier:LocalNotificationID_CountDown Type:LocalNotificationType_CountDown Msg:@"倒计时到了！该干嘛干嘛！" Second:[self.tfSeconds.text longLongValue]]
+            [clsOtherFun add10LocalNotificationWithIdentifier:LocalNotificationID_CountDown Msg:@"倒计时到了！该干嘛干嘛！" Second:[self.tfSeconds.text longLongValue]];
+        }else{
+            [clsOtherFun addLocalNotificationWithIdentifier:LocalNotificationID_CountDown Msg:@"倒计时到了！该干嘛干嘛！" Second:[self.tfSeconds.text longLongValue]]
             ;
         }
     }
 }
 
+-(void)setSeconds:(long long)seconds{
+    _seconds = seconds;
+    self.tfSeconds.text = [NSString stringWithFormat:@"%lld",seconds];
+    [clsOtherFun setTriggerCountDountSeconds:seconds];
+}
+
+-(void)recieveNotify:(NSNotification*) notification{
+    self.isAlert = NO;
+}
+
+- (IBAction)backAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)switchAction:(id)sender {
+    [self.view endEditing:YES];
+    if (self.seconds <= 0) {
+        [clsOtherFun showAlertMessage:@"时间不能低于0秒！"];
+        self.isAlert = NO;
+        return;
+    }
+    
+    self.btnIsAlert.selected = !self.btnIsAlert.selected;
+    self.isAlert = self.btnIsAlert.selected;
+}
+
 -(void)textFieldDidEndEditing:(UITextField *)textField{
-    [clsOtherFun setTriggerCountDountSeconds:[self.tfSeconds.text longLongValue]];
-    if (self.btnIsAlert.selected) {
-        if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 10.0) {
-            [clsOtherFun add10LocalNotificationWithIdentifier:LocalNotificationID_CountDown Type:LocalNotificationType_CountDown Msg:@"倒计时到了！该干嘛干嘛！" Second:[self.tfSeconds.text longLongValue]];
-        }
-        else{
-            [clsOtherFun addLocalNotificationWithIdentifier:LocalNotificationID_CountDown Type:LocalNotificationType_CountDown Msg:@"倒计时到了！该干嘛干嘛！" Second:[self.tfSeconds.text longLongValue]]
-            ;
-        }
+    if ([self.tfSeconds.text longLongValue] <= 0) {
+        [clsOtherFun showAlertMessage:@"时间不能低于0秒！"];
+        self.isAlert = NO;
+        return;
+    }
+    
+    self.seconds = [self.tfSeconds.text longLongValue];
+    if (self.isAlert) {
+        self.isAlert = YES;
     }
 }
 

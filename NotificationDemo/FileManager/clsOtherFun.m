@@ -107,7 +107,7 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
     return flag;
 }
 
-+ (void)setTriggerCoordinate:(CLLocationCoordinate2D)coordinate{
++ (void)setTriggerLocationCoordinate:(CLLocationCoordinate2D)coordinate{
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[NSNumber numberWithDouble:coordinate.latitude] forKey:TriggerLocation_Latitude];
@@ -115,9 +115,9 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
     [defaults synchronize];
 }
 
-+ (CLLocationCoordinate2D)getTriggerCoordinate{
++ (CLLocationCoordinate2D)getTriggerLocationCoordinate{
     
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(0, 0);
+    CLLocationCoordinate2D coordinate = DefaultCoordinate;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:TriggerLocation_Latitude]) {
         coordinate.latitude = [[defaults objectForKey:TriggerLocation_Latitude] doubleValue];
@@ -126,14 +126,14 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
     return coordinate;
 }
 
-+ (void)setTriggerRadius:(double)radius{
++ (void)setTriggerLocationRadius:(double)radius{
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[NSNumber numberWithDouble:radius] forKey:TriggerLocation_Radius];
     [defaults synchronize];
 }
 
-+ (double)getTriggerRadius{
++ (double)getTriggerLocationRadius{
     
     double radius = 0;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -177,7 +177,7 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
 
 #pragma mark -LocalNotification
 
-+ (void)add10LocalNotificationWithIdentifier:(NSString *)identifier Type:(NSString *)type Msg:(NSString*)msg Second:(long long)second{
++ (void)add10LocalNotificationWithIdentifier:(NSString *)identifier Msg:(NSString*)msg Second:(long long)second{
     
     [clsOtherFun cancel10LocalNotificationWithIdentifier:identifier];
     
@@ -185,13 +185,11 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
     //    content.badge = @2;
     content.title = identifier;
-    content.subtitle = type;
     content.body = msg;
     content.sound = [UNNotificationSound defaultSound];
     // 设定通知的userInfo，用来标识该通知
     NSMutableDictionary *aUserInfo = [[NSMutableDictionary alloc] init];
     aUserInfo[LocalNotificationIDKey] = identifier;
-    aUserInfo[LocalNotificationTypeKey] = type;
     content.userInfo = aUserInfo;
     
     // 2. 创建发送触发
@@ -210,7 +208,7 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
 
 
 // 添加本地通知
-+ (void)add10LocalNotificationWithIdentifier:(NSString *)identifier Type:(NSString *)type Msg:(NSString*)msg Time:(NSDate *)time{
++ (void)add10LocalNotificationWithIdentifier:(NSString *)identifier Msg:(NSString*)msg Time:(NSDate *)time{
     
     [clsOtherFun cancel10LocalNotificationWithIdentifier:identifier];
     
@@ -218,13 +216,11 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
 //    content.badge = @2;
     content.title = identifier;
-    content.subtitle = type;
     content.body = msg;
     content.sound = [UNNotificationSound defaultSound];
     // 设定通知的userInfo，用来标识该通知
     NSMutableDictionary *aUserInfo = [[NSMutableDictionary alloc] init];
     aUserInfo[LocalNotificationIDKey] = identifier;
-    aUserInfo[LocalNotificationTypeKey] = type;
     content.userInfo = aUserInfo;
     
     // 2. 创建发送触发
@@ -245,13 +241,46 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
     }];
 }
 
+// 添加本地通知
++ (void)add10LocalNotificationWithIdentifier:(NSString *)identifier Msg:(NSString*)msg Location:(CLLocationCoordinate2D)coordinate radius:(CLLocationDistance)radius{
+    
+    [clsOtherFun cancel10LocalNotificationWithIdentifier:identifier];
+    
+    // 1. 创建通知内容
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    //    content.badge = @2;
+    content.title = identifier;
+    content.body = msg;
+    content.sound = [UNNotificationSound defaultSound];
+    // 设定通知的userInfo，用来标识该通知
+    NSMutableDictionary *aUserInfo = [[NSMutableDictionary alloc] init];
+    aUserInfo[LocalNotificationIDKey] = identifier;
+    content.userInfo = aUserInfo;
+    
+    // 2. 创建发送触发
+    CLRegion *region = [[CLCircularRegion alloc] initWithCenter:coordinate radius:radius identifier:identifier];
+    region.notifyOnExit = YES;
+    region.notifyOnEntry = YES;
+    UNLocationNotificationTrigger *trigger = [UNLocationNotificationTrigger triggerWithRegion:region repeats:YES];
+    
+    // 3. 创建一个发送请求
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:trigger];
+    
+    // 4. 将请求添加到发送中心
+    [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+        if (error != nil) {
+            LRLog(@"Time Interval Notification scheduled Error : %@",error.description);
+        }
+    }];
+}
+
 // 取消某个本地推送通知
 + (void)cancel10LocalNotificationWithIdentifier:(NSString *)identifier {
     [[UNUserNotificationCenter currentNotificationCenter] removePendingNotificationRequestsWithIdentifiers:@[identifier]];
 }
 
 // 添加本地通知
-+ (void)addLocalNotificationWithIdentifier:(NSString *)identifier Type:(NSString *)type Msg:(NSString*)msg Second:(long long)second{
++ (void)addLocalNotificationWithIdentifier:(NSString *)identifier Msg:(NSString*)msg Second:(long long)second{
     // 若通知存在 则先去除通知 再添加
     [clsOtherFun cancelLocalNotificationWithIdentifier:identifier];
     
@@ -276,7 +305,6 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
         // 设定通知的userInfo，用来标识该通知
         NSMutableDictionary *aUserInfo = [[NSMutableDictionary alloc] init];
         aUserInfo[LocalNotificationIDKey] = identifier;
-        aUserInfo[LocalNotificationTypeKey] = type;
         
         notification.userInfo = aUserInfo;
         //        LRLog(@"\n添加本地通知 :%@ :%@ 提醒时间:%@",aUserInfo[LocalNotificationIDKey],aUserInfo[LocalNotificationTypeKey],notification.fireDate);
@@ -286,7 +314,7 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
 }
 
 
-+ (void)addLocalNotificationWithIdentifier:(NSString *)identifier Type:(NSString *)type Msg:(NSString*)msg Time:(NSDate *)time{
++ (void)addLocalNotificationWithIdentifier:(NSString *)identifier Msg:(NSString*)msg Time:(NSDate *)time{
     // 若通知存在 则先去除通知 再添加
     [clsOtherFun cancelLocalNotificationWithIdentifier:identifier];
     
@@ -311,10 +339,45 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
         // 设定通知的userInfo，用来标识该通知
         NSMutableDictionary *aUserInfo = [[NSMutableDictionary alloc] init];
         aUserInfo[LocalNotificationIDKey] = identifier;
-        aUserInfo[LocalNotificationTypeKey] = type;
         
         notification.userInfo = aUserInfo;
 //        LRLog(@"\n添加本地通知 :%@ :%@ 提醒时间:%@",aUserInfo[LocalNotificationIDKey],aUserInfo[LocalNotificationTypeKey],notification.fireDate);
+        // 将通知添加到系统中
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    }
+}
+
++ (void)addLocalNotificationWithIdentifier:(NSString *)identifier Msg:(NSString*)msg Location:(CLLocationCoordinate2D)coordinate radius:(CLLocationDistance)radius{
+    // 若通知存在 则先去除通知 再添加
+    [clsOtherFun cancelLocalNotificationWithIdentifier:identifier];
+    
+    // 初始化本地通知对象
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    if (notification) {
+        // 设置通知的地理位置
+        CLRegion *region = [[CLCircularRegion alloc] initWithCenter:coordinate radius:radius identifier:identifier];
+        region.notifyOnExit = YES;
+        region.notifyOnEntry = YES;
+        notification.region = region;
+        notification.regionTriggersOnce = NO;
+        
+        // 设置重复间隔
+        notification.repeatInterval = kCFCalendarUnitDay;
+        
+        // 设置提醒的文字内容
+        notification.alertBody   = msg;
+        notification.alertAction = @"这是什么鬼alertAction";
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        
+        // 设置应用程序右上角的提醒个数
+        //        notification.applicationIconBadgeNumber++;
+        
+        // 设定通知的userInfo，用来标识该通知
+        NSMutableDictionary *aUserInfo = [[NSMutableDictionary alloc] init];
+        aUserInfo[LocalNotificationIDKey] = identifier;
+        
+        notification.userInfo = aUserInfo;
+        //        LRLog(@"\n添加本地通知 :%@ :%@ 提醒时间:%@",aUserInfo[LocalNotificationIDKey],aUserInfo[LocalNotificationTypeKey],notification.fireDate);
         // 将通知添加到系统中
         [[UIApplication sharedApplication] scheduleLocalNotification:notification];
     }

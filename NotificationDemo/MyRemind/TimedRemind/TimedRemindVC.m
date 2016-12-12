@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.cls = [clsAlert getClsByType:AlertType_Timed];
+    self.cls = [clsAlert getCls:LocalNotificationID_Timed];
     self.lbTime.text = self.cls.TIME;
     self.btnIsAlert.selected = self.cls.ISON;
 }

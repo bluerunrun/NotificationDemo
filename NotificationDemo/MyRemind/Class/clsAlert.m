@@ -21,7 +21,6 @@
         self.ID = @"";
         self.TIME = @"00:00";
         self.ISON = NO;
-        self.TYPE = 0;
         self.MSG = @"";
         self.STATE = 1;
         self.drugAlerts = [NSMutableArray array];
@@ -84,41 +83,6 @@
     return list;
 }
 
-+ (clsAlert *)getClsByType:(int)pType{
-    
-    clsAlert * cls=nil;
-    NSString *strSQL=[NSString stringWithFormat:@"select * from alert where TYPE = %d ORDER BY TIME ASC",pType];
-    FMDatabase * db=[[FMDatabase alloc] initWithPath:[clsOtherFun getDatabasePath]];
-    if([db open]){
-        FMResultSet * resultSet = [db executeQuery:strSQL];
-        while ([resultSet next]) {
-            cls = [self deSerializeObj:resultSet.resultDictionary];
-        }
-    }
-    [db close];
-    return cls;
-}
-
-/**
- 根据提醒类型获取本地通知的类型字符串 用于区分响应本地通知
-
- @param type 提醒类型
- @return 本地通知的类型字符串
- */
-+(NSString *)getLocalNotificationType:(int)type{
-    NSString *name = @"";
-    switch (type) {
-        case AlertType_Timed:
-            name = LocalNotificationType_Timed;
-            break;
-        default:
-            name = LocalNotificationType_Drug;
-            break;
-    }
-    
-    return name;
-}
-
 + (BOOL)modifyCls:(clsAlert *)pcls{
     BOOL flag = NO;
     clsAlert *oclsOld = [clsAlert getCls:pcls.ID];
@@ -143,10 +107,10 @@
         
         if (pcls.ISON) {
             if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 10.0) {
-                [clsOtherFun add10LocalNotificationWithIdentifier:pcls.ID Type:[clsAlert getLocalNotificationType:pcls.TYPE] Msg:pcls.MSG Time:[clsOtherFun custHourMinFromString:pcls.TIME]];
+                [clsOtherFun add10LocalNotificationWithIdentifier:pcls.ID Msg:pcls.MSG Time:[clsOtherFun custHourMinFromString:pcls.TIME]];
             }
             else{
-                [clsOtherFun addLocalNotificationWithIdentifier:pcls.ID Type:[clsAlert getLocalNotificationType:pcls.TYPE] Msg:pcls.MSG Time:[clsOtherFun custHourMinFromString:pcls.TIME]];
+                [clsOtherFun addLocalNotificationWithIdentifier:pcls.ID Msg:pcls.MSG Time:[clsOtherFun custHourMinFromString:pcls.TIME]];
             }
         }else{
             if ([[[UIDevice currentDevice] systemVersion] doubleValue] >= 10.0) {
@@ -182,10 +146,9 @@
     NSDictionary *arguments = @{
                                 @"TIME": pcls.TIME,
                                 @"ISON":@(pcls.ISON),
-                                @"TYPE": @(pcls.TYPE),
                                 @"MSG": pcls.MSG};
     
-    NSString *strSQL=@"insert into alert (TIME, ISON, TYPE, MSG) VALUES (:TIME, :ISON, :TYPE, :MSG)";
+    NSString *strSQL=@"insert into alert (TIME, ISON, MSG) VALUES (:TIME, :ISON, :MSG)";
     FMDatabase * db=[[FMDatabase alloc] initWithPath:[clsOtherFun getDatabasePath]];
     if([db open]){
         flag = [db executeUpdate:strSQL withParameterDictionary:arguments];
@@ -198,7 +161,7 @@
 + (BOOL)updateCls:(clsAlert *)pcls{
     
     BOOL flag = NO;
-    NSString *strSQL=[NSString stringWithFormat:@"update alert set TIME='%@', ISON=%d, TYPE=%d, MSG='%@' where ID='%@'",pcls.TIME,pcls.ISON,pcls.TYPE,pcls.MSG,pcls.ID];
+    NSString *strSQL=[NSString stringWithFormat:@"update alert set TIME='%@', ISON=%d, MSG='%@' where ID='%@'",pcls.TIME,pcls.ISON,pcls.MSG,pcls.ID];
     
     FMDatabase * db=[[FMDatabase alloc] initWithPath:[clsOtherFun getDatabasePath]];
     if([db open]){

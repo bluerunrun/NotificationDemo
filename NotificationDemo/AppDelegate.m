@@ -52,13 +52,15 @@
         
         LRLog(@"\n应用外Local notification:%@ 提醒內容:%@ 提醒时间:%@",userInfo[LocalNotificationIDKey],notification.alertBody,notification.fireDate);
         self.messageID = notification.userInfo[LocalNotificationIDKey];
-        self.messageType = notification.userInfo[LocalNotificationTypeKey];
         self.message = notification.alertBody;
         self.messageTime = [clsOtherFun custYearMonthDayAndHourMinFromDate:notification.fireDate];
        
-        UIAlertController * alert = [UIAlertController alertControllerWithTitle:self.messageType message:self.message preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            LRLog(@"cancel");
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:self.messageID message:self.message preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            if ([self.messageID isEqualToString:LocalNotificationID_CountDown]) {
+                [clsOtherFun setTriggerCountDountON:NO];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"LocalNotification_CountDown_Recieve" object:nil];
+            }
         }]];
         [[clsOtherFun getCurrentVC] presentViewController:alert animated:YES completion:nil];
         
@@ -81,21 +83,36 @@
     LRLog(@"\n应用内Local notification:%@ 提醒內容:%@ 提醒时间:%@",notification.userInfo[LocalNotificationIDKey],notification.alertBody,notification.fireDate);
 
     self.messageID = notification.userInfo[LocalNotificationIDKey];
-    self.messageType = notification.userInfo[LocalNotificationTypeKey];
     self.message = notification.alertBody;
     self.messageTime = [clsOtherFun custYearMonthDayAndHourMinFromDate:notification.fireDate];
     
     
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:self.messageType message:self.message preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        LRLog(@"cancel");
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:self.messageID message:self.message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        if ([self.messageID isEqualToString:LocalNotificationID_CountDown]) {
+            [clsOtherFun setTriggerCountDountON:NO];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"LocalNotification_CountDown_Recieve" object:nil];
+        }
     }]];
     [[clsOtherFun getCurrentVC] presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(nonnull UNNotificationResponse *)response withCompletionHandler:(nonnull void (^)())completionHandler{
+    UNNotificationContent *content = response.notification.request.content;
+    LRLog(@"\ndidReceiveNotificationResponse:%@ 提醒內容:%@ 提醒时间:%@",content.userInfo[LocalNotificationIDKey],content.body,response.notification.date);
     
-    LRLog(@"\ndidReceiveNotificationResponse:%@ 提醒內容:%@ 提醒时间:%@",response.notification.request.content.userInfo[LocalNotificationIDKey],response.notification.request.content.body,response.notification.date);
+    self.messageID = content.userInfo[LocalNotificationIDKey];
+    self.message = content.body;
+    self.messageTime = [clsOtherFun custYearMonthDayAndHourMinFromDate:response.notification.date];
+    UIAlertController * alert = [UIAlertController alertControllerWithTitle:self.messageID message:self.message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        if ([self.messageID isEqualToString:LocalNotificationID_CountDown]) {
+            [clsOtherFun setTriggerCountDountON:NO];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"LocalNotification_CountDown_Recieve" object:nil];
+        }
+    }]];
+    [[clsOtherFun getCurrentVC] presentViewController:alert animated:YES completion:nil];
+    
     completionHandler();
 }
 
