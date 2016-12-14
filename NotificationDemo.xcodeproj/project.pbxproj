@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		56C19FFED2E4D766C9B24CE1 /* libPods-NotificationDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7AE6A8B32B48F5AE40BA8B8 /* libPods-NotificationDemo.a */; };
+		7A03BC321DFFF7F200CF6E89 /* 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7A03BC311DFFF7F200CF6E89 /* 1.mp3 */; };
 		7A0EA1BF1DF5596B00AD1AAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA1BE1DF5596B00AD1AAF /* main.m */; };
 		7A0EA1C21DF5596B00AD1AAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0EA1C11DF5596B00AD1AAF /* AppDelegate.m */; };
 		7A0EA1CA1DF5596B00AD1AAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A0EA1C91DF5596B00AD1AAF /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 /* Begin PBXFileReference section */
 		0AD17B512A56A4F7E36F6D18 /* Pods-NotificationDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotificationDemo/Pods-NotificationDemo.release.xcconfig"; sourceTree = "<group>"; };
 		2A4E3862C693F702936B18C3 /* Pods-NotificationDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotificationDemo/Pods-NotificationDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		7A03BC311DFFF7F200CF6E89 /* 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1.mp3; sourceTree = "<group>"; };
 		7A0EA1BA1DF5596B00AD1AAF /* NotificationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotificationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0EA1BE1DF5596B00AD1AAF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A0EA1C01DF5596B00AD1AAF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		7A0EA1BD1DF5596B00AD1AAF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7A03BC311DFFF7F200CF6E89 /* 1.mp3 */,
 				7A0EA3951DF56C0900AD1AAF /* NotificationDemo01.db */,
 				7A0EA1BE1DF5596B00AD1AAF /* main.m */,
 				7A0EA1C91DF5596B00AD1AAF /* Assets.xcassets */,
@@ -468,6 +471,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A03BC321DFFF7F200CF6E89 /* 1.mp3 in Resources */,
 				7A0EA3961DF5743300AD1AAF /* NotificationDemo01.db in Resources */,
 				7AFF3C481DF9544B006BB83E /* CountDownRemindVC.xib in Resources */,
 				7A0EA2551DF55BF200AD1AAF /* MenuCell.xib in Resources */,

@@ -192,6 +192,11 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
     aUserInfo[LocalNotificationIDKey] = identifier;
     content.userInfo = aUserInfo;
     
+    //创建图片附件
+    UNNotificationAttachment * attach = [UNNotificationAttachment attachmentWithIdentifier:@"imageAttach" URL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"1" ofType:@"mp3"]] options:nil error:nil];
+    //设置附件数组
+    content.attachments = @[attach];
+    
     // 2. 创建发送触发
     UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:second repeats:NO];
     
