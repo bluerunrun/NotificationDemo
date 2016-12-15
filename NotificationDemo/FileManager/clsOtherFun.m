@@ -197,6 +197,19 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
     //设置附件数组
     content.attachments = @[attach];
     
+    
+//    UNTextInputNotificationAction * action = [UNTextInputNotificationAction actionWithIdentifier:@"action" title:@"回复" options:UNNotificationActionOptionAuthenticationRequired textInputButtonTitle:@"发送" textInputPlaceholder:@"请输入回复内容"];
+    UNNotificationAction * action = [UNNotificationAction actionWithIdentifier:@"action" title:@"活动标题1" options:UNNotificationActionOptionNone];
+    UNNotificationAction * action2 = [UNNotificationAction actionWithIdentifier:@"action" title:@"活动标题2" options:UNNotificationActionOptionNone];
+    UNNotificationAction * action3 = [UNNotificationAction actionWithIdentifier:@"action" title:@"活动标题3" options:UNNotificationActionOptionNone];
+    UNNotificationAction * action4 = [UNNotificationAction actionWithIdentifier:@"action" title:@"活动标题4" options:UNNotificationActionOptionNone];
+    
+    //创建通知模板
+    UNNotificationCategory * category = [UNNotificationCategory categoryWithIdentifier:@"myNotificationCategoryText" actions:@[action,action2,action3,action4] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
+    //设置通知内容对应的模板 需要注意 这里的值要与对应模板id一致
+    content.categoryIdentifier = @"myNotificationCategoryText";
+    [[UNUserNotificationCenter currentNotificationCenter] setNotificationCategories:[NSSet setWithObjects:category, nil]];
+    
     // 2. 创建发送触发
     UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:second repeats:NO];
     
@@ -227,6 +240,13 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
     NSMutableDictionary *aUserInfo = [[NSMutableDictionary alloc] init];
     aUserInfo[LocalNotificationIDKey] = identifier;
     content.userInfo = aUserInfo;
+    
+    UNNotificationAction * action = [UNNotificationAction actionWithIdentifier:@"action" title:@"活动标题1" options:UNNotificationActionOptionNone];
+    //根据id拿到自定义UI的模板
+    UNNotificationCategory * category = [UNNotificationCategory categoryWithIdentifier:@"myNotificationCategoryCustom" actions:@[action] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
+    //设置通知内容对应的模板 需要注意 这里的值要与对应模板id一致
+    content.categoryIdentifier = @"myNotificationCategoryCustom";
+    [[UNUserNotificationCenter currentNotificationCenter] setNotificationCategories:[NSSet setWithObjects:category, nil]];
     
     // 2. 创建发送触发
     NSCalendar *greCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
