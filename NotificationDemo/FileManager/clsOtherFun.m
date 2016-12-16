@@ -198,14 +198,9 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
     content.attachments = @[attach];
     
     
-//    UNTextInputNotificationAction * action = [UNTextInputNotificationAction actionWithIdentifier:@"action" title:@"回复" options:UNNotificationActionOptionAuthenticationRequired textInputButtonTitle:@"发送" textInputPlaceholder:@"请输入回复内容"];
-    UNNotificationAction * action = [UNNotificationAction actionWithIdentifier:@"action" title:@"活动标题1" options:UNNotificationActionOptionNone];
-    UNNotificationAction * action2 = [UNNotificationAction actionWithIdentifier:@"action" title:@"活动标题2" options:UNNotificationActionOptionNone];
-    UNNotificationAction * action3 = [UNNotificationAction actionWithIdentifier:@"action" title:@"活动标题3" options:UNNotificationActionOptionNone];
-    UNNotificationAction * action4 = [UNNotificationAction actionWithIdentifier:@"action" title:@"活动标题4" options:UNNotificationActionOptionNone];
-    
+    UNTextInputNotificationAction * action = [UNTextInputNotificationAction actionWithIdentifier:@"reply" title:@"回复" options:UNNotificationActionOptionAuthenticationRequired textInputButtonTitle:@"发送" textInputPlaceholder:@"请输入回复内容"];
     //创建通知模板
-    UNNotificationCategory * category = [UNNotificationCategory categoryWithIdentifier:@"myNotificationCategoryText" actions:@[action,action2,action3,action4] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
+    UNNotificationCategory * category = [UNNotificationCategory categoryWithIdentifier:@"myNotificationCategoryText" actions:@[action] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
     //设置通知内容对应的模板 需要注意 这里的值要与对应模板id一致
     content.categoryIdentifier = @"myNotificationCategoryText";
     [[UNUserNotificationCenter currentNotificationCenter] setNotificationCategories:[NSSet setWithObjects:category, nil]];
@@ -241,9 +236,10 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
     aUserInfo[LocalNotificationIDKey] = identifier;
     content.userInfo = aUserInfo;
     
-    UNNotificationAction * action = [UNNotificationAction actionWithIdentifier:@"action" title:@"活动标题1" options:UNNotificationActionOptionNone];
+    UNNotificationAction * likeAction = [UNNotificationAction actionWithIdentifier:@"点赞" title:@"likes" options:UNNotificationActionOptionNone];
+     UNNotificationAction * replyAction = [UNNotificationAction actionWithIdentifier:@"回复" title:@"reply" options:UNNotificationActionOptionNone];
     //根据id拿到自定义UI的模板
-    UNNotificationCategory * category = [UNNotificationCategory categoryWithIdentifier:@"myNotificationCategoryCustom" actions:@[action] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
+    UNNotificationCategory * category = [UNNotificationCategory categoryWithIdentifier:@"myNotificationCategoryCustom" actions:@[likeAction,replyAction] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
     //设置通知内容对应的模板 需要注意 这里的值要与对应模板id一致
     content.categoryIdentifier = @"myNotificationCategoryCustom";
     [[UNUserNotificationCenter currentNotificationCenter] setNotificationCategories:[NSSet setWithObjects:category, nil]];

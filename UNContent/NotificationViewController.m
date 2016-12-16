@@ -27,4 +27,17 @@
     self.label.text = notification.request.content.body;
 }
 
+
+- (void)didReceiveNotificationResponse:(UNNotificationResponse *)response completionHandler:(void (^)(UNNotificationContentExtensionResponseOption option))completion{
+    if ([response.actionIdentifier  isEqual: @"likes"]) {
+        NSString *identifiers = response.notification.request.identifier;
+        
+        [[UNUserNotificationCenter currentNotificationCenter] removePendingNotificationRequestsWithIdentifiers:@[identifiers]];
+        [[UNUserNotificationCenter currentNotificationCenter] removeDeliveredNotificationsWithIdentifiers:@[identifiers]];
+        completion(UNNotificationContentExtensionResponseOptionDoNotDismiss);
+    }else{
+        completion(UNNotificationContentExtensionResponseOptionDismiss);
+    }
+}
+
 @end
