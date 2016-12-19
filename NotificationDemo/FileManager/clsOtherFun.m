@@ -236,8 +236,8 @@ static NSString *TriggerLocation_Radius = @"TriggerLocation_Radius";
     aUserInfo[LocalNotificationIDKey] = identifier;
     content.userInfo = aUserInfo;
     
-    UNNotificationAction * likeAction = [UNNotificationAction actionWithIdentifier:@"点赞" title:@"likes" options:UNNotificationActionOptionNone];
-     UNNotificationAction * replyAction = [UNNotificationAction actionWithIdentifier:@"回复" title:@"reply" options:UNNotificationActionOptionNone];
+    UNNotificationAction * likeAction = [UNNotificationAction actionWithIdentifier:@"likes" title:@"点赞" options:UNNotificationActionOptionNone];
+     UNNotificationAction * replyAction = [UNNotificationAction actionWithIdentifier:@"reply" title:@"回复" options:UNNotificationActionOptionNone];
     //根据id拿到自定义UI的模板
     UNNotificationCategory * category = [UNNotificationCategory categoryWithIdentifier:@"myNotificationCategoryCustom" actions:@[likeAction,replyAction] intentIdentifiers:@[] options:UNNotificationCategoryOptionCustomDismissAction];
     //设置通知内容对应的模板 需要注意 这里的值要与对应模板id一致
